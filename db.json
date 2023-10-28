@@ -1,0 +1,29 @@
+{
+  "game": [
+    {
+      "lever": 1,
+      "text": ["php", "java", "nodejs"],
+      "speed": 0.33
+    },
+    {
+      "lever": 2,
+      "text": ["phpmailer", "lavarel", "vuejs"],
+      "speed": 0.36
+    },
+    {
+      "lever": 3,
+      "text": ["laptrinhweb", "frontend", "backend"],
+      "speed": 0.39
+    },
+    {
+      "lever": 4,
+      "text": ["designpattern", "blockchain", "fullstack"],
+      "speed": 0.42
+    },
+    {
+      "lever": 5,
+      "text": ["languageoflegent", "fifaonline3", "frameword"],
+      "speed": 0.45
+    }
+  ]
+}
