@@ -8,14 +8,17 @@ let checkcontinue = 0;
 let arrfilter = [];
 
 async function renderText() {
-  let res = await fetch(`http://localhost:3000/game?lever=${lever}`);
-  let data = await res.json();
+  let res = await fetch(
+    `https://api.myjson.online/v1/records/5ea2e3d0-72c3-4a2a-a903-0ab20db7296a`
+  );
+  let { data } = await res.json();
+  const filteredData = data.filter((item) => item.lever === lever);
 
   let html = "";
-  data[0].text.map((item) => {
+  filteredData[0].text.map((item) => {
     return (html += `<div class="text">${item}</div>`);
   });
-  speed = data[0].speed;
+  speed = filteredData[0].speed;
   return (blocktext.innerHTML = html);
 }
 renderText();
@@ -194,7 +197,6 @@ async function render() {
       } else {
         if (arr[count] == e.key) {
           let bulet = document.querySelector(`.bulet${countbulet}`);
-          console.log(countbulet);
 
           bulet.style.top = `${topCoordinate + 25}px`;
           bulet.style.left = `${leftCoordinate - 5}px`;
@@ -219,11 +221,15 @@ async function render() {
             let textblock = document.querySelectorAll(".text");
 
             if (!textblock[0]) {
-              let data = await fetch(
-                `http://localhost:3000/game?lever=${lever + 1}`
+              let res = await fetch(
+                `https://api.myjson.online/v1/records/5ea2e3d0-72c3-4a2a-a903-0ab20db7296a`
               );
-              let res = await data.json();
-              if (res[0]) {
+
+              let { data } = await res.json();
+              const filteredData = data.filter(
+                (item) => item.lever === lever + 1
+              );
+              if (filteredData[0]) {
                 setTimeout(() => {
                   pause.style.opacity = "0";
                   win.classList.add("hiddenwin");
