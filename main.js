@@ -113,6 +113,7 @@ async function render() {
   }
 
   pausecontinue.onclick = function () {
+    window.addEventListener("keydown", onkeyDown);
     ispause = false;
     moveKey(false);
     pause.style.opacity = "1";
@@ -122,6 +123,7 @@ async function render() {
     pause.style.opacity = "0";
     ispause = true;
     containerpause.classList.add("hidden-container-pause");
+    window.removeEventListener("keydown", onkeyDown);
   };
   if (checkcontinue == 1) {
     moveKey(false);
